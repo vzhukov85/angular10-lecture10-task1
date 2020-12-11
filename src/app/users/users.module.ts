@@ -31,6 +31,7 @@ import { MatButtonModule } from '@angular/material/button';
       multi: true,
     },
   ],
+  entryComponents: [MapDialogComponent],
   exports: [QueryTableComponent],
 })
 export class UsersModule {}
