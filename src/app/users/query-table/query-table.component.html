@@ -1,0 +1,59 @@
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>Имя</mat-label>
+        <mat-select [formControl]="namesCtrl" multiple (selectionChange)="change()">
+          <mat-option *ngFor="let name of names" [value]="name">
+            {{ name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </th>
+    <td mat-cell *matCellDef="let element" (click)="openDialog(element.geo)">{{ element.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Email</mat-label>
+            <mat-select [formControl]="emailsCtrl" multiple (selectionChange)="change()">
+              <mat-option *ngFor="let email of emails" [value]="email">
+                {{ email }}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </th>
+    <td mat-cell *matCellDef="let element" (click)="openDialog(element.geo)">{{ element.email }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef>
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Адрес</mat-label>
+            <mat-select [formControl]="addressesCtrl" multiple (selectionChange)="change()">
+              <mat-option *ngFor="let address of addresses" [value]="address">
+                {{ address }}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </th>
+    <td mat-cell *matCellDef="let element" (click)="openDialog(element.geo)">{{ element.address }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<hr>
+
+<a [href]="fileUrl" download="data.txt">Скачать файл</a>
+<br>
+
+<button mat-raised-button (click)='getUser(1)'>Запросить пользователя id=1</button>
+<br>
+<button mat-raised-button (click)='delete(1)'>Удалить пользователя id=1</button>
+<br>
+<button mat-raised-button (click)='post()'>POST</button><br>
+<button mat-raised-button (click)='put()'>PUT</button>

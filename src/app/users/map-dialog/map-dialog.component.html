@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Координаты</h1>
+<div mat-dialog-content style="width: 1000px;">
+    <agm-map [latitude]="lat" [longitude]="long">
+        <agm-marker [latitude]="lat" [longitude]="long"></agm-marker>
+    </agm-map>    
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Закрыть</button>
+</div>
